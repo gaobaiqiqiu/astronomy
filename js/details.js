@@ -137,7 +137,6 @@ $.ajax({
                 slideChangeTransitionEnd:function(){
                     // 改变音频按钮
                     if($('.swiper-slide-active audio').length == 1){
-                        console.log(11223)
                         $('.audioPlay')[0].src = 'img/audioPlay.png'
                     }else{
                         $('.audioPlay')[0].src = 'img/audioPaused.png'
