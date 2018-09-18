@@ -70,10 +70,11 @@
     foot.onclick = function () {
         window.location.href = 'list.html';
     }
-    // var back = document.querySelector('.back');
-    // back.onclick = function () {
-    //     window.android.exitApp()
-    // }
+    //调用Android的退出app
+    var back = document.querySelector('.back');
+    back.onclick = function () {
+        window.android.exitApp()
+    }
     
     //太阳、水星、金星、地球、火星、木星、土星、天王星、海王星、冥王星、月亮
     //自身半径
