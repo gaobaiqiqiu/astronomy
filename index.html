@@ -75,7 +75,7 @@
     back.onclick = function () {
         window.android.exitApp()
     }
-    
+
     //太阳、水星、金星、地球、火星、木星、土星、天王星、海王星、冥王星、月亮
     //自身半径
     var sizeArr = [1392000, 4878, 12103.6, 12756, 6794, 142984, 120540, 51118, 49532, 2298, 3476.28]
@@ -191,13 +191,22 @@
     //星球
     var imgAll = ['img/sun.jpg', 'img/mercury.jpg', 'img/venus.jpg', 'img/earth.jpg', 'img/mars.jpg', 'img/jupiter.jpg', 'img/saturn.jpg', 'img/uranus.jpg', 'img/neptune.jpg', 'img/pluto.jpg']
     var starAll = [];
-
+    var imgSrc = [];
     function initStar() {
         var starMesh;
         for (var i = 0; i < sizeAll.length; i++) {
+            var img = new Image();
+            img.src = imgAll[i];
+            img.onerror = function () {
+                console.log('error');
+            }
+            img.onload = function () {
+                console.log('success');
+            }
+            imgSrc.push(img.src);
             var starGeo = new THREE.SphereGeometry(sizeAll[i], 100, 100);
             var starMater = new THREE.MeshPhongMaterial({
-                map: new THREE.TextureLoader().load(imgAll[i]),
+                map: new THREE.TextureLoader().load(imgSrc[i]),
                 side: THREE.DoubleSide
             });
             starMesh = new THREE.Mesh(starGeo, starMater);
